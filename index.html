@@ -1,0 +1,114 @@
+<html>
+
+  <head>
+  <title>Guess the Pokedex Number! - PKMN</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+    html {
+      font-family: 'Press Start 2P', cursive;
+    }
+    h1 {
+      font-size: 35px;
+      color: yellow;
+    }
+      #GuessingTextBox {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 24px;
+      }
+      #SmashButton {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 16px;
+        background-color: blue;
+        padding: 15px 32px;
+        border: none;
+        color: yellow;
+        border-radius: 12px;
+      }
+      #questionOut {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 36px;
+        text-align: center;
+      }
+      #guessingOut {
+        font-family: 'Press Start 2P', cursive;
+        font-size: 25px;
+      }
+      body {
+        background-image: url("pokemon.png");
+        background-size: 100% 100%;
+      }
+
+    </style>
+
+    <script>
+    var pics = ["<img src = 'mewtwowg.png' height = 550px width = 550px>" , "<img src = 'pikachuwg.png' height = 500px width = 500px>", "<img src = 'zygardewg.png' height = 500px width = 500px>", "<img src = 'necrozmawg.png' height = 500px width = 500px>", "<img src = 'typenullwg.png' height = 500px width = 500px>", ""];
+    var questions = ["What's Mewtwo's Pokedex number?","What's Pikachu's Pokedex number?", "What's Zygarde's Pokedex number?", "What's (Ultra) Necrozma's Pokedex number?", "What's Type: Null's Pokedex number?", "Game over!"];
+    var playersAnswers = [];
+    var realAnswers  = ["", "150", "25", "718", "800", "772"];
+    var i = 0;
+    var points = 0;
+   function pokedexGame()
+   {
+       document.getElementById('imgOut').innerHTML = pics[i];
+       document.getElementById('questionOut').innerHTML = questions[i];
+       var temp = document.getElementById("GuessingTextBox").value;
+       temp = parseInt(temp);
+       playersAnswers[i] = temp;
+              //alert(playersAnswers[i]);
+         if(playersAnswers[i] == realAnswers[i])
+            {
+              points++;
+              //alert(points + " points.");
+            }
+         i++;
+            if(points == 5)
+            {
+            document.getElementById('guessingOut').innerHTML = " 5/5 Points";
+            pics[5] = "Great work! You're a Pokemon Master!"
+            }
+            else if (points == 4)
+            {
+            document.getElementById('guessingOut').innerHTML = " 4/5 Points";
+            pics[5] = "You're nearly a Pokemon Master!"
+            }
+            else if(points == 3)
+            {
+            document.getElementById('guessingOut').innerHTML = " 3/5 Points";
+            pics[5] = "Study the Dex some more, and you'll do better!"
+            }
+            else if (points == 2)
+            {
+            document.getElementById('guessingOut').innerHTML = " 2/5 Points";
+            pics[5] = "Perhaps the Pokedex needs some more review..."
+            }
+            else if(points == 1)
+            {
+            document.getElementById('guessingOut').innerHTML = " 1/5 Points";
+            pics[5] = "Not looking so good! But nice try."
+            }
+            else
+            {
+            document.getElementById('guessingOut').innerHTML = " 0/5 Points";
+            pics[5] = "You'll need a lot of improvement!"
+            }
+
+
+   }
+    </script>
+
+  </head>
+
+  <body><center>
+    <img src = 'logopokemon.png' height = 150px width = 450px>
+    <h1>Pokedex Guessing Game</h1>
+    <span id = "questionOut"></span>
+    <br>
+    <span id = "imgOut"></span>
+    <br>
+    <span id = "guessingOut"></span>
+    <input type = 'text' value = 'Guess!' id = 'GuessingTextBox'>
+    <input type = "button" value = "I Choose You!" id = 'SmashButton' onclick = "pokedexGame()">
+  </center></body>
+
+</html>
